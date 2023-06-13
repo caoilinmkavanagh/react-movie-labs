@@ -1,3 +1,4 @@
+import MovieReviewPage from "./pages/movieReviewPage";
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Navigate, Routes, Link } from "react-router-dom";
@@ -20,6 +21,7 @@ const App = () => {
         <Route exact path="/movies/favorites" element={<FavoriteMoviesPage />} />
         <Route path="/movies/:id" element={<MoviePage />} />
         <Route path="/" element={<HomePage />} />
+        <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
         <Route path="*" element={ <Navigate to="/" /> } />
       </Routes>
     </BrowserRouter>
