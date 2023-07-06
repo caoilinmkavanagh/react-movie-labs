@@ -20,8 +20,8 @@ const Header = (props ) => {
         marginBottom: 1.5,
       }}
       >
-      <IconButton aria-label="go forward" onClick={() => navigate(+1)}>
-        <ArrowForwardIcon color="primary" fontSize="large" />
+      <IconButton aria-label="go back" onClick={() => navigate(-1)}>
+        <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
 
       <Typography variant="h4" component="h3">
