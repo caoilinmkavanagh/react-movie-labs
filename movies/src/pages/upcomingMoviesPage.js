@@ -9,7 +9,7 @@ const UpcomingMoviesPage = (props) => {
 
   /* const {  data, error, isLoading, isError }  = useQuery('discover', getUpcomingMovies) */
   const { data, error, isLoading, isError } = useQuery('upcomingMovies', getUpcomingMovies, {
-    staleTime: 0,
+   // staleTime: 0,
   });
 
   if (isLoading) {
