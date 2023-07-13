@@ -8,6 +8,7 @@ import AddToPlaylistIcon from '../components/cardIcons/addToPlaylists'
 import NavigationIcon from '@mui/icons-material/Navigation';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import Tooltip from '@mui/material/Tooltip';
 
 const UpcomingMoviesPage = (props) => {
 
@@ -64,17 +65,22 @@ const UpcomingMoviesPage = (props) => {
         }}
       />
       <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px' }}>
+      <Tooltip title="Back">
       <Fab color="primary" aria-label="Minus" onClick={previousPage} disabled={movies.length === 0} >
         <RemoveIcon />
       </Fab>
-        <span><Fab variant="extended" onClick={scrollToTop}>
+      </Tooltip>
+        <span> <Tooltip title="Back"><Fab variant="extended" onClick={scrollToTop}>
       <NavigationIcon sx={{ mr: 1 }} />
       Navigate
-    </Fab></span>
+    </Fab>
+    </Tooltip></span>
+    <Tooltip title="Scroll to Top">
         <Fab color="primary" aria-label="add" onClick={nextPage}
           disabled={movies.length === 0} >
         <AddIcon />
       </Fab>
+      </Tooltip>
       </div>
     </>
   );
@@ -94,5 +100,5 @@ const UpcomingMoviesPage = (props) => {
 }; */
 export default UpcomingMoviesPage;
 
-//reference pagination articles: https://medium.com/@ryanfarney/the-moviedb-data-pagination-a48a040f1e90, https://www.youtube.com/watch?v=RwrkokvWys0, https://github.com/Ateevduggal/The-Movie-Central/blob/master/src/Pages/Trending.js
+//reference pagination articles: https://medium.com/@ryanfarney/the-moviedb-data-pagination-a48a040f1e90, https://www.youtube.com/watch?v=RwrkokvWys0
 //reference scroll articles: https://stackblitz.com/run?file=demo.tsx, https://stackoverflow.com/questions/4210798/how-to-scroll-to-top-of-page-with-javascript-jquery

@@ -12,6 +12,19 @@ export const getMovies = () => {
   });
 };
 
+// search movies
+const fetchSearch = async (searchText, page) => {
+  const data = await fetch(
+    `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&query=${searchText}&page=${page}&include_adult=false`
+  );
+  const { results } = await data.json();
+  return results;
+};
+
+export { fetchSearch };
+
+
+
   
 export const getMovie = (args) => {
   console.log(args)
@@ -76,17 +89,19 @@ export const getMovie = (args) => {
   };
 
   export const getLanguages = async () => {
-    return fetch(
-      "https://api.themoviedb.org/3/configuration/languages"
-    ).then( (response) => {
-      if (!response.ok) {
-        throw new Error(response.json().message);
-      }
-      return response.json();
-    })
-    .catch((error) => {
-      throw error
-   });
+    const apiKey = process.env.REACT_APP_TMDB_KEY;
+    const url = `https://api.themoviedb.org/3/configuration/languages?api_key=${apiKey}`;
+  
+    return fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.json().message);
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        throw error;
+      });
   };
   
 

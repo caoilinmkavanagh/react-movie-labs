@@ -15,7 +15,7 @@ import StarRateIcon from "@mui/icons-material/StarRate";
 import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
-
+import Box from '@mui/material/Box';
 export default function MovieCard({ movie, action }) {
 
   const { favorites, addToFavorites } = useContext(MoviesContext);
@@ -32,7 +32,14 @@ export default function MovieCard({ movie, action }) {
   }; */
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card 
+      sx={{ 
+        maxWidth: 345,
+        '&:hover': {
+          backgroundColor: 'yellow',
+        },
+      }}
+    >
             <CardHeader
         avatar={
           movie.favorite ? (
@@ -87,3 +94,4 @@ export default function MovieCard({ movie, action }) {
     </Card>
   );
 }
+//reference article: https://stackoverflow.com/questions/76083741/how-to-override-hover-background-color-of-card-or-cardactionarea-using-styleover, https://mui.com/system/getting-started/the-sx-prop/,  https://mui.com/material-ui/react-toggle-button/, https://mui.com/material-ui/react-box/, 
