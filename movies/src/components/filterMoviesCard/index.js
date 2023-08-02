@@ -25,10 +25,10 @@ const formControl =
 
 export default function FilterMoviesCard(props) {
 
-  const { data, error, isLoading, isError } = useQuery("genres", getGenres);
-  const [selectedGenre, setSelectedGenre] = useState("0");
+/*   const { data, error, isLoading, isError } = useQuery("genres", getGenres);
+  const [selectedGenre, setSelectedGenre] = useState("0"); */
 
-  if (isLoading) {
+ /*  if (isLoading) {
     return <Spinner />;
   }
 
@@ -39,18 +39,43 @@ export default function FilterMoviesCard(props) {
   if (genres[0].name !== "All"){
     genres.unshift({ id: "0", name: "All" });
   }
+   */
 
  /*  const handleChange = (e, type, value) => {
     e.preventDefault();
     props.onUserInput(type, value); 
   }; */
 
+  const { data: genresData, error: genresError, isLoading: genresLoading, isError: genresIsError } = useQuery("genres", getGenres);
+  const { data: languagesData, isLoading: languagesLoading, isError: languagesIsError, error: languagesError } = useQuery("languages", getLanguages); // Updated
+
+  const [selectedGenre, setSelectedGenre] = useState("0");
+  const [selectedLanguage, setSelectedLanguage] = useState("");
+
+  if (genresLoading || languagesLoading) {
+    return <Spinner />;
+  }
+
+  if (genresIsError || languagesIsError) {
+    return <h1>{genresError?.message || languagesError?.message}</h1>;
+  }
+
+  const handleLanguageChange = (e) => {
+    setSelectedLanguage(e.target.value); // NEW
+    props.onUserInput("language", e.target.value); // NEW
+  };
+  
+  const genres = genresData.genres;
+  if (genres[0].name !== "All") {
+    genres.unshift({ id: "0", name: "All" });
+  }
+
   const handleChange = (e, type, value) => {
     e.preventDefault();
     if (type === "genre") {
       setSelectedGenre(value);
     }
-    props.onUserInput(type, value); // NEW
+    props.onUserInput(type, value);
   };
 
   const handleTextChange = (e, props) => {
@@ -87,6 +112,26 @@ export default function FilterMoviesCard(props) {
           </Button>
         ))}
       </div>
+      {languagesData && ( // Check if languagesData is available
+        <div style={{ marginTop: "20px" }}>
+          <FormControl sx={{ ...formControl }}>
+            <InputLabel id="select-language-label">Language</InputLabel>
+            <Select
+              labelId="select-language-label"
+              id="select-language"
+              value={selectedLanguage}
+              onChange={handleLanguageChange}
+            >
+              {languagesData.map((language) => (
+                <MenuItem key={language.iso_639_1} value={language.iso_639_1}>
+                  {language.english_name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </div>
+      )}
     </div>
+    
   );  
 }

@@ -5,6 +5,7 @@ import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
+import FilterMoviesCard from "../filterMoviesCard";
 
 const Header = (props ) => {
   const title = props.title
@@ -33,6 +34,7 @@ const Header = (props ) => {
       <IconButton aria-label="go forward" onClick={() => navigate(+1)}>
         <ArrowForwardIcon color="primary" fontSize="large" />
       </IconButton>
+
 
  {/*      <IconButton aria-label="go forward" onClick={() => navigate(+1)}>
         <ArrowForwardIcon color="primary" fontSize="large" />

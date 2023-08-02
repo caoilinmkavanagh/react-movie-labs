@@ -12,6 +12,8 @@ export const getMovies = () => {
   });
 };
 
+
+
 // search movies
 const fetchSearch = async (searchText, page) => {
   const data = await fetch(
@@ -24,6 +26,19 @@ const fetchSearch = async (searchText, page) => {
 export { fetchSearch };
 
 
+export const getPeoples = () => {
+  return fetch(
+    `http://api.themoviedb.org/3/tv/{id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1`
+  ).then((response) => {
+    if (!response.ok) {
+      throw new Error(response.json().message);
+    }
+    return response.json();
+  })
+  .catch((error) => {
+     throw error
+  });
+};
 
   
 export const getMovie = (args) => {

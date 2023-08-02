@@ -24,6 +24,7 @@ const chip = { margin: 0.5 };
 const MovieDetails = ({ movie }) => {  // Don't miss this!
   const [drawerOpen, setDrawerOpen] = useState(false);
   
+  
 
   return (
     <>
@@ -73,6 +74,8 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
           </li>
         ))}
       </Paper>
+
+
       <Fab
         color="secondary"
         variant="extended"
