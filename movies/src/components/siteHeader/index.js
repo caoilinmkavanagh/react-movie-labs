@@ -11,6 +11,10 @@ import { useNavigate } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import Auth from "../../auth";
+//import { onAuthStateChanged } from "firebase/auth";
+//import { auth } from "../../config/firebase";
+
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
@@ -20,13 +24,24 @@ const SiteHeader = ({ history }) => {
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const [authOpen, setAuthOpen] = useState(false);
+ // const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const navigate = useNavigate();
+
+/*   useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsAuthenticated(!!user);
+    });
+
+    return () => unsubscribe();
+  }, []); */
 
   const menuOptions = [
     { label: "Home", path: "/" },
     { label: "Favorites", path: "/movies/favorites" },
-    { label: "Search", path: "/search"},
+    //{ label: isAuthenticated ? "Logout" : "Login", path: isAuthenticated ? "/logout" : "/login" },
+    { label: "Login", path: "/login" },
     { label: "Upcoming", path: "movies/upcoming" },
     { label: "People", path: "person/people" },
     { label: "Top Rated", path: "movies/toprated" },
@@ -40,6 +55,15 @@ const SiteHeader = ({ history }) => {
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
+  const handleAuthClickOpen = () => {
+    setAuthOpen(true);
+  };
+
+  const handleAuthClose = () => {
+    setAuthOpen(false);
+  };
+
 
   return (
     <>
@@ -90,18 +114,21 @@ const SiteHeader = ({ history }) => {
             ) : (
               <>
                 {menuOptions.map((opt) => (
-                  <Button
-                    key={opt.label}
-                    color="inherit"
-                    onClick={() => handleMenuSelect(opt.path)}
-                  >
-                    {opt.label}
-                  </Button>
+                 <Button
+                 key={opt.label}
+                 color="inherit"
+                 onClick={opt.label === "Login" ? handleAuthClickOpen : () => handleMenuSelect(opt.path)}
+               >
+                 {opt.label}
+               </Button>
+ 
+                  
                 ))}
               </>
             )}
         </Toolbar>
       </AppBar>
+      <Auth open={authOpen} onClose={handleAuthClose} />
       <Offset />
     </>
   );

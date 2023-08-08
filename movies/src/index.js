@@ -1,6 +1,8 @@
+import { initializeApp } from 'firebase/app';
+import 'firebase/auth';
 import MovieReviewPage from "./pages/movieReviewPage";
 import React from "react";
-import ReactDOM from "react-dom";
+//import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import MoviePage from "./pages/movieDetailsPage";
@@ -17,6 +19,8 @@ import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage';
 import PopularPeoplePage from "./pages/popularPeoplePage";
 import PersonDetailPage from "./pages/personDetailPage";
+import { Auth } from './auth';
+
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -38,6 +42,7 @@ const App = () => {
         <Routes>
         <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
         <Route path="/movies/:id/recommendations" element={ <MovieReviewPage /> } />
+        <Route path="/login" element={ <Auth /> } />
         <Route path="/person/people" element={ <PopularPeoplePage /> } />
         <Route path="/person/people/:id" element={ <PersonDetailPage /> } />
         <Route path="/search" element={<SearchPage />} />
@@ -56,6 +61,19 @@ const App = () => {
     </QueryClientProvider>
   );
 };
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDZnKBYXaCxraO_zycffiQ54BQwo5IoUpM",
+  authDomain: "reactmovielabs.firebaseapp.com",
+  projectId: "reactmovielabs",
+  storageBucket: "reactmovielabs.appspot.com",
+  messagingSenderId: "858661082743",
+  appId: "1:858661082743:web:be1cbaaa25ec1e1fe81872",
+  measurementId: "G-JQK8QEXKLL"
+};
+
 const rootElement = createRoot( document.getElementById("root") )
+initializeApp(firebaseConfig);
+//initializeApp(firebaseConfig);
 rootElement.render(<App />);
 
