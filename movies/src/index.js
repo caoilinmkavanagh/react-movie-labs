@@ -62,16 +62,6 @@ const App = () => {
   );
 };
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDZnKBYXaCxraO_zycffiQ54BQwo5IoUpM",
-  authDomain: "reactmovielabs.firebaseapp.com",
-  projectId: "reactmovielabs",
-  storageBucket: "reactmovielabs.appspot.com",
-  messagingSenderId: "858661082743",
-  appId: "1:858661082743:web:be1cbaaa25ec1e1fe81872",
-  measurementId: "G-JQK8QEXKLL"
-};
-
 const rootElement = createRoot( document.getElementById("root") )
 initializeApp(firebaseConfig);
 //initializeApp(firebaseConfig);
