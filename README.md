@@ -61,3 +61,8 @@ https://dev.to/nicolasmontielf/how-setup-firebase-on-your-frontend-project-1ap
 https://lo-victoria.com/beginner-friendly-guide-to-react-authentication-system-with-firebase
 https://javascript.plainenglish.io/setting-up-firebase-ui-with-your-react-application-49ffa20f8168
 https://www.youtube.com/watch?v=eTuJ47RvEdQ
+Dialog box:
+https://mui.com/material-ui/react-dialog/
+https://mui.com/material-ui/react-dialog/#basic-dialog
+https://stackblitz.com/run?file=Demo.js
+https://stackoverflow.com/questions/65133379/react-material-ui-dialog-how-to-close-a-dialogue
