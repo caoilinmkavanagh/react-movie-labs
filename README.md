@@ -22,11 +22,13 @@ React movie labs + ca1 project
 + Added popular people view
 + Added open popular people more information on individual person
 + added according to view popular people + sniplet of individuals details
++ Dialog box for firebase ui login
++ Snackboxs from material ui when sucess or failure in place, ie, login 
 
 ## Setup requirements.
 
 install material ui
-install 
+install npm firebase firebaseui
 
 ## API endpoints.
 
@@ -38,10 +40,11 @@ install
 + Popular people view = person/people
 + Popular person individual view = person/people/:id
 
+
 ## Routing.
 
     { label: "Home", path: "/" },
-    { label: "Favorites", path: "/movies/favorites" },
+    { label: "Favourites", path: "/movies/favourites" },
     { label: "Search", path: "/search"},
     { label: "Upcoming", path: "movies/upcoming" },
     { label: "People", path: "person/people" },
@@ -66,3 +69,6 @@ https://mui.com/material-ui/react-dialog/
 https://mui.com/material-ui/react-dialog/#basic-dialog
 https://stackblitz.com/run?file=Demo.js
 https://stackoverflow.com/questions/65133379/react-material-ui-dialog-how-to-close-a-dialogue
+Pagination: 
+//reference pagination articles: https://medium.com/@ryanfarney/the-moviedb-data-pagination-a48a040f1e90, https://www.youtube.com/watch?v=RwrkokvWys0
+//reference scroll articles: https://stackblitz.com/run?file=demo.tsx, https://stackoverflow.com/questions/4210798/how-to-scroll-to-top-of-page-with-javascript-jquery
