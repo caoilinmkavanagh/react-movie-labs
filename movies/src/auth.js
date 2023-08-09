@@ -11,7 +11,8 @@ export const Auth = ({ open: isOpen, onClose }) => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
   //const [open, setOpen] = useState(false);
- 
+
+
   const navigate = useNavigate(); 
     console.log(auth?.currentUser?.email);
 
@@ -85,7 +86,7 @@ export const Auth = ({ open: isOpen, onClose }) => {
     };
   return (
     <div>
-    <Dialog open={isOpen} onClose={onClose}> {/* <-- use isOpen and onClose here */}
+    <Dialog open={isOpen} onClose={onClose}> 
       <DialogTitle>Authentication</DialogTitle>
       <DialogContent>
         <DialogContentText>
@@ -124,57 +125,3 @@ export const Auth = ({ open: isOpen, onClose }) => {
 }; 
 
 export default Auth;
-
-/*     <div>
-    <Button variant="outlined" onClick={handleClickOpen}>
-      Open Auth Dialog
-    </Button>
-    <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>Authentication</DialogTitle>
-      <DialogContent>
-        <DialogContentText>
-          Please enter your email and password to sign in.
-        </DialogContentText>
-        <TextField
-          autoFocus
-          margin="dense"
-          label="Email Address"
-          type="email"
-          fullWidth
-          variant="standard"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <TextField
-          margin="dense"
-          label="Password"
-          type="password"
-          fullWidth
-          variant="standard"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={signIn}>Signin</Button>
-        <Button onClick={signInWithGoogle}>Signin with Google</Button>
-        <Button onClick={logOut}>Logout</Button>
-      </DialogActions>
-    </Dialog>
-    <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={closeSnackbar}>
-      <SnackbarContent message={snackbarMessage} />
-    </Snackbar>
-  </div> */
-    /* <div>
-      <input placeholder="Email.." onChange={(e) => setEmail(e.target.value)} />
-      <input
-        type="password"
-        placeholder="Password.."
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={signIn}> Signin</button>
-      <button onClick={signInWithGoogle}> Signin with google</button>
-      <button onClick={logOut}> logOut</button>
-      <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={closeSnackbar}>
-        <SnackbarContent message={snackbarMessage} />
-      </Snackbar>
-    </div> */

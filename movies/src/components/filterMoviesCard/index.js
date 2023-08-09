@@ -1,15 +1,14 @@
-import React, { useContext, useState } from "react";
-import Card from "@mui/material/Card";
+import React, { useState } from "react";
+/* import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
+import Typography from "@mui/material/Typography"; */
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
-import SearchIcon from "@mui/icons-material/Search";
+//import SearchIcon from "@mui/icons-material/Search";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
 import { getGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner';
@@ -82,9 +81,9 @@ export default function FilterMoviesCard(props) {
     handleChange(e, "name", e.target.value);
   };
 
-  const handleGenreChange = (e) => {
+/*   const handleGenreChange = (e) => {
     handleChange(e, "genre", e.target.value);
-  };
+  }; */
 
 
 
@@ -112,7 +111,7 @@ export default function FilterMoviesCard(props) {
           </Button>
         ))}
       </div>
-      {languagesData && ( // Check if languagesData is available
+      {languagesData && ( 
         <div style={{ marginTop: "20px" }}>
           <FormControl sx={{ ...formControl }}>
             <InputLabel id="select-language-label">Language</InputLabel>

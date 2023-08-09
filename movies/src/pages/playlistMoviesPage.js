@@ -10,7 +10,6 @@ import WriteReview from "../components/cardIcons/writeReview";
 const PlaylistMoviesPage = () => {
   const {playlists: movieIds } = useContext(MoviesContext);
 
-  // Create an array of queries and run in parallel.
   const playlistMovieQueries = useQueries(
     movieIds.map((movieId) => {
       return {
@@ -19,7 +18,6 @@ const PlaylistMoviesPage = () => {
       };
     })
   );
-  // Check if any of the parallel queries is still loading.
   const isLoading = playlistMovieQueries.find((m) => m.isLoading === true);
 
   if (isLoading) {
@@ -31,7 +29,7 @@ const PlaylistMoviesPage = () => {
     return q.data
   });
 
-  const toDo = () => true;
+  //const toDo = () => true;
 
   return (
     <PageTemplate

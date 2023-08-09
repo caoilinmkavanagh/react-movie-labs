@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import React, { useContext  } from "react";
+import React, { useContext, useState } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
 import Avatar from '@mui/material/Avatar';
 import Card from "@mui/material/Card";
@@ -12,13 +12,15 @@ import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 import StarRateIcon from "@mui/icons-material/StarRate";
-import IconButton from "@mui/material/IconButton";
+//import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
-import Box from '@mui/material/Box';
+//import Box from '@mui/material/Box';
+
 export default function MovieCard({ movie, action }) {
 
   const { favorites, addToFavorites } = useContext(MoviesContext);
+
 
   if (favorites.find((id) => id === movie.id)) {
     movie.favorite = true;
@@ -30,6 +32,7 @@ export default function MovieCard({ movie, action }) {
     e.preventDefault();
     addToFavorites(movie);
   }; */
+  
 
   return (
     <Card 
@@ -83,11 +86,6 @@ export default function MovieCard({ movie, action }) {
         <Link to={`/movies/${movie.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             Details
-          </Button>
-        </Link>
-        <Link to={`/movies/${movie.id}`}>
-          <Button variant="outlined" size="medium" color="primary">
-            More Like This
           </Button>
         </Link>
       </CardActions>
